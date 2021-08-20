@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "takuanto",
+    "slug": "takuanto",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "takuanto"
+}
