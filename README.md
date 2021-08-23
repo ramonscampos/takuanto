@@ -3,7 +3,7 @@
 Aplicativo para comparativo de bebidas baseado no valor do litro.
 Saiba de maneira descomplicada qual bebida é mais barata independente do tamanho do recipiente.
 
- 💻  Projeto criado com React-Native EXPO Bareworkflow
+ 💻  Projeto criado com React-Native EXPO Bareworkflow + Typescript
  
 ### Ajustes e melhorias
 
