@@ -36,10 +36,10 @@ export const Content = styled.ScrollView.attrs({
   keyboardShouldPersistTaps: 'always',
   contentContainerStyle: {
     flex: 1,
+    paddingTop: 50,
   },
 })`
   flex: 1;
-  margin-top: 50px;
 `;
 
 export const InsertButton = styled(Button).attrs(({ theme }) => ({

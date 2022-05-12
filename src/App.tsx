@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
     <AppProvider>
       <View style={{ flex: 1 }}>
         <Routes />
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
       </View>
     </AppProvider>
   );

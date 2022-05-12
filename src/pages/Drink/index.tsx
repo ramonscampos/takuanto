@@ -3,8 +3,9 @@ import React, { useCallback, useState, createRef } from 'react';
 import { Modal } from 'components/Modal';
 import { useDrink } from 'hooks/drinks';
 import { DrinkScreenNavigationProp, DrinkScreenRouteProp } from 'routes/Types';
-import { TextInput } from 'react-native';
+import { TextInput, Keyboard } from 'react-native';
 import { TextInputMask, TextInputMaskMethods } from 'react-native-masked-text';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import {
   Container,
   HeaderContent,
@@ -98,47 +99,51 @@ function Drink({ navigation, route }: DrinkProps): JSX.Element {
       </HeaderContent>
 
       <Content>
-        <Description
-          ref={descriptionRef}
-          placeholder="Descrição"
-          value={description}
-          keyboardType="default"
-          returnKeyLabel="Próximo"
-          returnKeyType="next"
-          onChangeText={value => setDescription(value)}
-          onSubmitEditing={() => {
-            volumeRef.current?.getElement().focus();
-          }}
-        />
+        <TouchableWithoutFeedback
+          style={{ height: '100%' }}
+          onPress={() => Keyboard.dismiss()}
+        >
+          <Description
+            ref={descriptionRef}
+            placeholder="Descrição"
+            value={description}
+            keyboardType="default"
+            returnKeyLabel="Próximo"
+            returnKeyType="next"
+            onChangeText={value => setDescription(value)}
+            onSubmitEditing={() => {
+              volumeRef.current?.getElement().focus();
+            }}
+          />
 
-        <Volume
-          ref={volumeRef}
-          type="custom"
-          mask="9999"
-          maxLength={4}
-          placeholder="Volume (ml)"
-          value={volume}
-          keyboardType="number-pad"
-          returnKeyLabel="Próximo"
-          returnKeyType="next"
-          onChangeText={value => setVolume(value)}
-          onSubmitEditing={() => priceRef.current?.focus()}
-        />
+          <Volume
+            ref={volumeRef}
+            type="custom"
+            mask="9999"
+            maxLength={4}
+            placeholder="Volume (ml)"
+            value={volume}
+            keyboardType="number-pad"
+            returnKeyLabel="Próximo"
+            returnKeyType="next"
+            onChangeText={value => setVolume(value)}
+            onSubmitEditing={() => priceRef.current?.focus()}
+          />
 
-        <Price
-          ref={priceRef}
-          type="currency"
-          placeholder="Preço"
-          value={price}
-          unit="R$ "
-          maxLength={9}
-          keyboardType="number-pad"
-          returnKeyLabel="Salvar"
-          returnKeyType="done"
-          onChangeValue={value => setPrice(value)}
-          onSubmitEditing={handleInsert}
-        />
-
+          <Price
+            ref={priceRef}
+            type="currency"
+            placeholder="Preço"
+            value={price}
+            unit="R$ "
+            maxLength={9}
+            keyboardType="number-pad"
+            returnKeyLabel="Salvar"
+            returnKeyType="done"
+            onChangeValue={value => setPrice(value)}
+            onSubmitEditing={handleInsert}
+          />
+        </TouchableWithoutFeedback>
         <ButtonsContainer>
           <InsertButton Icon={BottleIcon} onPress={handleInsert}>
             {drink ? 'Salvar bebida' : 'Adicionar bebida'}
